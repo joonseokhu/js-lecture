@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <select id="type">
+      <option value="1">입금</option>
+      <option value="0">출금</option>
+    </select>
+    <input type="text" id="money">
+    <button onclick="bankController.use()">확인</button>
+  </div>
+  <div>
+    <div id="current"></div>
+    <table>
+      <thead>
+        <th>날짜시간</th>
+        <th>거래종류</th>
+        <th>거래금액</th>
+        <th>잔액</th>
+      </thead>
+      <tbody id="history"></tbody>
+    </table>
+  </div>
+  <script src="./data.js"></script>
+  <script src="./controller.js"></script>
+</body>
+</html>
