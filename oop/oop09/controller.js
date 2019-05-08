@@ -34,6 +34,7 @@ var bankController = (function(){
     use: function(){
       var type = !!Number(el.type.value);
       var num = Number(el.money.value);
+      el.money.value = '';
       var result = type ? data.add(num) : data.sub(num);
       console.log(result);
       showHistory();
