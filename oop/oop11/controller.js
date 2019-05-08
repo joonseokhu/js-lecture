@@ -32,15 +32,19 @@ var bankController = (function(){
 
   function makeLog(log) {
     var html = [];
+    function td(value) {
+      html.push('<td>'+value+'</td>');
+    }
     var logTypeClassName = log.type ? 'add' : 'sub';
     html.push('<tr id="bank_log_'+ log.id +'" class="bank_log_'+logTypeClassName+'">');
-    html.push('<td>'+ log.id +'</td>');
-    html.push('<td>'+ timestamp(log.timestamp) +'</td>');
-    html.push('<td>'+ getTypeMsg(log.type) +'</td>');
-    html.push('<td>'+ getMoneyStr(log.price) +'</td>');
-    html.push('<td>'+ log.msg +'</td>');
-    html.push('<td>'+ getMoneyStr(log.current) +'</td>');
-    return html.join(' ');
+    td(log.id)
+    td(timestamp(log.timestamp))
+    td(getTypeMsg(log.type))
+    td(getMoneyStr(log.price))
+    td(log.msg)
+    td(getMoneyStr(log.current))
+    html.push('</tr>');
+    return html.join('\n');
   };
 
   function error(msg, type) {
@@ -53,7 +57,7 @@ var bankController = (function(){
     for (var i = 0; i < log.history.length; i++) {
       html.push(makeLog(log.history[i]));
     }
-    el.history.innerHTML = html.join(' ');
+    el.history.innerHTML = html.join('\n');
   }
   
   showHistory();
