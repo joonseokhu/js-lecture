@@ -21,6 +21,10 @@ var bankController = (function(){
     return result;
   }
 
+  function getMoneyStr(num) {
+    return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+  }
+
   function getTypeMsg(bool) {
     if (bool === undefined) return null;
     return bool ? '입금' : '출금';
@@ -28,13 +32,14 @@ var bankController = (function(){
 
   function makeLog(log) {
     var html = [];
-    html.push('<tr id="bank_log_'+ log.id +'">');
+    var logTypeClassName = log.type ? 'add' : 'sub';
+    html.push('<tr id="bank_log_'+ log.id +'" class="bank_log_'+logTypeClassName+'">');
     html.push('<td>'+ log.id +'</td>');
     html.push('<td>'+ timestamp(log.timestamp) +'</td>');
     html.push('<td>'+ getTypeMsg(log.type) +'</td>');
-    html.push('<td>'+ log.price +'원 </td>');
+    html.push('<td>'+ getMoneyStr(log.price) +'</td>');
     html.push('<td>'+ log.msg +'</td>');
-    html.push('<td>'+ log.current +'원 </td>');
+    html.push('<td>'+ getMoneyStr(log.current) +'</td>');
     return html.join(' ');
   };
 

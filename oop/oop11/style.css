@@ -1,0 +1,13 @@
+* {
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+th, td {
+  padding: 8px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+tr.bank_log_add{color: green}
+tr.bank_log_sub{color: red}
